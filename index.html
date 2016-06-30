@@ -1,30 +1,35 @@
 <!DOCTYPE html>
-<html>
 <head>
-	<title>GA Final assignement - Live Music</title>
-	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
-	<script src="main-firebase.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.js"   integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="   crossorigin="anonymous"></script>  
+  <!-- Firebase CDN -->
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <!-- Handlebars CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+  <!-- custom scripts -->
+  <script src="Livemain.js"></script>
 </head>
 <body>
-<h1>Find Live Music near you!</h1>
-<p>What is your zipcode?</p>
-<form action="" id="zipcode">
-<input type="numbers">
- <button>Find live music</button>
-<br>
+<h1>What's your fav music?</h1>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCr92WuVPfwZDt5XpaK13BoJmcMz3C1hik",
+    authDomain: "summer-outsideconcerts-board.firebaseapp.com",
+    databaseURL: "https://summer-outsideconcerts-board.firebaseio.com",
+    storageBucket: "summer-outsideconcerts-board.appspot.com",
+  };
+  firebase.initializeApp(config);
+</script>
 
-
-<p>Are you planning your own street concert? Get some audience by sharing the details here!</p>
-<form action="" id="message-form">
-<input type="text">
- <button>Share the details of your concert</button>
- </form>
-	<script src="main-firebase.js"></script>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+  <script id="list-template" type="text/x-handlebars-template">
+    <li data-id={{id}}>{{message}}</li>
+  </script>
+  <form action="" id="message-form">
+    <input type="text" id="message">
+    <button>That's my jam:</button>
+  </form>
+  <ol id="messages-list"></ol>
 </body>
 </html>
